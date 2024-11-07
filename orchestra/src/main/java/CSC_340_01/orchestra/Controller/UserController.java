@@ -25,13 +25,14 @@ public class UserController {
         return userService.getUserById(userId);
 
     }
-    @PostMapping("/new")
+
+    @PostMapping("/newUser")
     public List<User> addNewUser(@RequestBody User user){
         userService.addNewUser(user);
         return userService.getAllUsers();
     }
 
-    @PutMapping("/update/{userId}")
+    @PutMapping("/updateUser/{userId}")
     public User updateUser(@PathVariable long userId, @RequestBody User user){
         userService.updateUser(userId, user);
         return userService.getUserById(userId);
