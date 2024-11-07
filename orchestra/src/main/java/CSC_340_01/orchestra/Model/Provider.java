@@ -23,35 +23,29 @@ public class Provider {
     }
 
     // getters and setters
-    public Long getUserId() {
-        return provider_id;
-    }
+    public Long getProvider_id() { return provider_id; }
 
-    public void setUserId(Long userId) {
-        this.provider_id = userId;
-    }
+    public void setProvider_id(Long userId) { this.provider_id = userId; }
 
-    public String getUsername() {
-        return bio;
-    }
+    public String getBio() { return bio; }
 
-    public void setUsername(String bio) {
+    public void setBio(String bio) {
         this.bio = bio;
     }
 
-    public String getEmail() {
+    public String getProfileImage() {
         return profile_image_url;
     }
 
-    public void setEmail(String profile_image_url) {
+    public void setProfileImage(String profile_image_url) {
         this.profile_image_url = profile_image_url;
     }
 
-    public String getPassword() {
+    public String getPaymentUrl() {
         return payment_url;
     }
 
-    public void setPassword(String payment_url) {
+    public void setPaymentUrl(String payment_url) {
         this.payment_url = payment_url;
     }
 }
