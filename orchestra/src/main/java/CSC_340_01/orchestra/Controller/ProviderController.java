@@ -2,9 +2,8 @@ package CSC_340_01.orchestra.Controller;
 
 import CSC_340_01.orchestra.Model.Provider;
 import CSC_340_01.orchestra.Service.ProviderService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
