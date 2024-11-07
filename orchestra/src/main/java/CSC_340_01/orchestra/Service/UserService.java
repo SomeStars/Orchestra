@@ -16,4 +16,22 @@ public class UserService {
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
-}
+
+    public User getUserById(long userId){
+        return userRepository.findById(userId).orElse(null);
+    }
+    public void addNewUser(User user){
+        userRepository.save(user);
+    }
+
+    public void updateUser(long userId, User user){
+        User existing = getUserById(userId);
+        existing.setUsername(user.getUsername());
+        existing.setEmail(user.getEmail());
+        existing.setPassword(user.getPassword());
+        existing.setRole(user.getRole());
+
+        userRepository.save(existing);
+        }
+    }
+
