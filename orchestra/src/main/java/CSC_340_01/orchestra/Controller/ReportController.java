@@ -26,9 +26,9 @@ public class ReportController {
         return reportService.getAllReviewReports();
     }
 
-    @PostMapping("/api/reports")
+    @PostMapping
     public ResponseEntity<Report> createReport(@RequestBody Report report) {
-        Report savedReport = reportService.createReport(report);
+        Report savedReport = reportService.saveReport(report);
         return new ResponseEntity<>(savedReport, HttpStatus.CREATED);
     }
 

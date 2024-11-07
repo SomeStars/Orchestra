@@ -20,11 +20,6 @@ public class ReportService {
         return reportRepository.findByReviewIdIsNotNull();
     }
 
-    public Report createReport(Report report) {
-        report.setStatus("pending"); // Default status for new reports
-        return reportRepository.save(report);
-    }
-
     public Report updateReportStatus(Long reportId, String newStatus) {
         Report report = reportRepository.findById(reportId)
                 .orElseThrow(() -> new RuntimeException("Report not found"));
@@ -33,6 +28,9 @@ public class ReportService {
     }
 
     public Report saveReport(Report report) {
+        if (report.getStatus() == null) {
+            report.setStatus("pending");
+        }
         return reportRepository.save(report);
     }
 }
