@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal" created-in="IU-242.23339.11">
+    <data-source name="orchestra@localhost" uuid="ed959788-e89a-428a-835f-4a4dd84bd653">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="MYSQL" />
+      <user-name>tester</user-name>
+      <schema-mapping />
+    </data-source>
+  </component>
+</project>

@@ -4,6 +4,7 @@ import CSC_340_01.orchestra.Model.Provider;
 import CSC_340_01.orchestra.Model.Provider;
 import CSC_340_01.orchestra.Repository.ProviderRepository;
 import CSC_340_01.orchestra.Repository.ProviderRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -33,5 +34,11 @@ public class ProviderService {
         existing.setPaymentUrl(provider.getPaymentUrl());
 
         providerRepository.save(existing);
+    }
+
+    public void deleteProvider(int providerId) {
+        Provider existingProvider = providerRepository.findById((long) providerId)
+                .orElseThrow(() -> new EntityNotFoundException("Provider with ID: " + providerId + " does not exist."));
+        providerRepository.deleteById((long) providerId);
     }
 }
