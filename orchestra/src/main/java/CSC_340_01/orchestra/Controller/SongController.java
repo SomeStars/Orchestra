@@ -1,10 +1,11 @@
 package CSC_340_01.orchestra.Controller;
 
 import CSC_340_01.orchestra.Model.Song;
+import CSC_340_01.orchestra.Model.Song;
 import CSC_340_01.orchestra.Service.SongService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import CSC_340_01.orchestra.Service.SongService;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
@@ -17,7 +18,14 @@ public class SongController {
     }
 
     @GetMapping
-    public List<Song> getAllSongs() {
+    public List<Song> getAllSong() {
         return songService.getAllSongs();
     }
+
+    @PostMapping("/new")
+    public List<Song> addNewSong(@RequestBody Song song) {
+        songService.addNewSong(song);
+        return songService.getAllSongs();
+    }
+
 }

@@ -1,6 +1,7 @@
 package CSC_340_01.orchestra.Controller;
 
 import CSC_340_01.orchestra.Model.Provider;
+import CSC_340_01.orchestra.Model.Provider;
 import CSC_340_01.orchestra.Service.ProviderService;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,4 +20,11 @@ public class ProviderController {
     public List<Provider> getAllProviders() {
         return providerService.getAllProviders();
     }
+
+    @PostMapping("/new")
+    public List<Provider> addNewProvider(@RequestBody Provider provider) {
+        providerService.addNewProvider(provider);
+        return providerService.getAllProviders();
+    }
+
 }
