@@ -1,4 +1,4 @@
-package CSC_340_01.orchestra;
+package CSC_340_01.orchestra.Model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
