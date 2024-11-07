@@ -31,4 +31,8 @@ public class ReportService {
         report.setStatus(newStatus);
         return reportRepository.save(report);
     }
+
+    public Report saveReport(Report report) {
+        return reportRepository.save(report);
+    }
 }
