@@ -3,6 +3,8 @@ package CSC_340_01.orchestra.Controller;
 import CSC_340_01.orchestra.Model.Report;
 import CSC_340_01.orchestra.Service.ReportService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,9 +26,10 @@ public class ReportController {
         return reportService.getAllReviewReports();
     }
 
-    @PostMapping
-    public Report createReport(@RequestBody Report report) {
-        return reportService.createReport(report);
+    @PostMapping("/api/reports")
+    public ResponseEntity<Report> createReport(@RequestBody Report report) {
+        Report savedReport = reportService.createReport(report);
+        return new ResponseEntity<>(savedReport, HttpStatus.CREATED);
     }
 
     @PutMapping("/{reportId}/status")
