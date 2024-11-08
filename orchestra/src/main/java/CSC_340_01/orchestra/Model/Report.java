@@ -1,6 +1,7 @@
 package CSC_340_01.orchestra.Model;
 
 import jakarta.persistence.*;
+import CSC_340_01.orchestra.Model.User;
 
 @Entity
 @Table(name = "reports")
@@ -10,24 +11,25 @@ public class Report {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long reportId;
 
-    @Column(nullable = true)
+    @Column(name = "song_id", nullable = true)
     private Long songId; // nullable, foreign key for songs
 
-    @Column(nullable = true)
+    @Column(name = "review_id", nullable = true)
     private Long reviewId; // nullable, foreign key for reviews
 
+    @Column(name = "user_id", nullable = false)
+    private User user;
     private String reason;
-    private Long userId;
     private String status;
 
     // constructor
     public Report() {}
 
-    public Report(String reason, Long songId, Long reviewId, Long userId) {
+    public Report(String reason, Long songId, Long reviewId, User user) {
         this.reason = reason;
         this.songId = songId;
         this.reviewId = reviewId;
-        this.userId = userId;
+        this.user = user;
         this.status = "pending"; // default status
     }
 
@@ -64,12 +66,12 @@ public class Report {
         this.reviewId = reviewId;
     }
 
-    public Long getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setReportedBy(Long userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getStatus() {
