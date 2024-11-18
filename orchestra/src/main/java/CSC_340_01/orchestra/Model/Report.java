@@ -18,18 +18,21 @@ public class Report {
     private Long reviewId; // nullable, foreign key for reviews
 
     @Column(name = "user_id", nullable = false)
-    private User user;
+    private Long userId;
+
+    @Column(name = "report_reason")
     private String reason;
+
     private String status;
 
     // constructor
     public Report() {}
 
-    public Report(String reason, Long songId, Long reviewId, User user) {
+    public Report(String reason, Long songId, Long reviewId, Long userId) {
         this.reason = reason;
         this.songId = songId;
         this.reviewId = reviewId;
-        this.user = user;
+        this.userId = userId;
         this.status = "pending"; // default status
     }
 
@@ -66,12 +69,12 @@ public class Report {
         this.reviewId = reviewId;
     }
 
-    public User getUser() {
-        return user;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUser(Long userId) {
+        this.userId = userId;
     }
 
     public String getStatus() {

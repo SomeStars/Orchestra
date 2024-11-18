@@ -44,7 +44,7 @@ public class ReportController {
     @PostMapping
     public ResponseEntity<Report> createReport(@RequestBody Report report) {
         Report savedReport = reportService.saveReport(report);
-        return new ResponseEntity<>(savedReport, HttpStatus.CREATED);
+        return ResponseEntity.ok(savedReport);
     }
 
     // update the status of a report
