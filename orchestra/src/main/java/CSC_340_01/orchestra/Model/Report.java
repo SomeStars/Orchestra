@@ -1,6 +1,7 @@
 package CSC_340_01.orchestra.Model;
 
 import jakarta.persistence.*;
+import java.util.Date;
 import CSC_340_01.orchestra.Model.User;
 
 @Entity
@@ -23,6 +24,7 @@ public class Report {
     @Column(name = "report_reason")
     private String reason;
 
+    private Date date;
     private String status;
 
     // constructor
@@ -83,5 +85,13 @@ public class Report {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }
