@@ -28,6 +28,7 @@ public class ReportController {
     public List<Report> getAllReports() {
         return reportService.getAllReports();
     }
+
     // get a list of all reports on songs
     @GetMapping("/songs")
     public List<Report> getAllSongReports() {
@@ -40,6 +41,11 @@ public class ReportController {
         return reportService.getAllReviewReports();
     }
 
+    // view the details of a single report
+    @GetMapping("/{reportId}")
+    public Report getReportById(@PathVariable Long reportId) {
+        return reportService.getReportById(reportId);
+    }
     // create a new report
     @PostMapping
     public ResponseEntity<Report> createReport(@RequestBody Report report) {

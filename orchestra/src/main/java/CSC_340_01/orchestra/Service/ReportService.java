@@ -1,12 +1,12 @@
 package CSC_340_01.orchestra.Service;
 
-import CSC_340_01.orchestra.Model.User;
 import CSC_340_01.orchestra.Model.Report;
 import CSC_340_01.orchestra.Repository.ReportRepository;
 import CSC_340_01.orchestra.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ReportService {
@@ -28,6 +28,11 @@ public class ReportService {
     // return a list of all review reports
     public List<Report> getAllReviewReports() {
         return reportRepository.findByReviewIdIsNotNull();
+    }
+
+    public Report getReportById(Long reportId) {
+        return reportRepository.findById(reportId)
+                .orElseThrow(() -> new RuntimeException("Report not found with ID: " + reportId));
     }
 
     // update the status of a report
