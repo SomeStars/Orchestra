@@ -14,6 +14,7 @@ public class Provider {
     private Long provider_id;
 
     private String bio;
+    private String username;
     private String profile_image_url;
     private String payment_url;
 
@@ -31,6 +32,12 @@ public class Provider {
 
     public void setBio(String bio) {
         this.bio = bio;
+    }
+
+    public String getUsername() { return username; }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getProfileImage() {
