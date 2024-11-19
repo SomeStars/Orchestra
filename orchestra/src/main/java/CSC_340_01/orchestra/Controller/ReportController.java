@@ -6,12 +6,14 @@ import CSC_340_01.orchestra.Service.ReportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
-@RequestMapping("/api/reports")
+@Controller
+@RequestMapping("/reports")
 public class ReportController {
 
     @Autowired
@@ -24,12 +26,18 @@ public class ReportController {
     }
 
     // get a list of all reports
-    @GetMapping()
-    public List<Report> getAllReports() {
-        return reportService.getAllReports();
+    @GetMapping("/all")
+    public String getAllReports(Model model) {
+        List<Report> songReports = reportService.getAllSongReports();
+        List<Report> reviewReports = reportService.getAllReviewReports();
+
+        model.addAttribute("songReports", songReports);
+        model.addAttribute("reviewReports", reviewReports);
+
+        return "view-reports";
     }
 
-    // get a list of all reports on songs
+    /* get a list of all reports on songs
     @GetMapping("/songs")
     public List<Report> getAllSongReports() {
         return reportService.getAllSongReports();
@@ -57,5 +65,5 @@ public class ReportController {
     @PutMapping("/{reportId}/status")
     public Report updateReportStatus(@PathVariable Long reportId, @RequestParam String status) {
         return reportService.updateReportStatus(reportId, status);
-    }
+    }*/
 }
