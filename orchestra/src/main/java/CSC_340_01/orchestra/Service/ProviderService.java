@@ -30,6 +30,7 @@ public class ProviderService {
     public void updateProvider(long providerId, Provider provider){
         Provider existing = getProviderById(providerId);
         existing.setBio(provider.getBio());
+        existing.setUsername(provider.getUsername());
         existing.setProfileImage(provider.getProfileImage());
         existing.setPaymentUrl(provider.getPaymentUrl());
 

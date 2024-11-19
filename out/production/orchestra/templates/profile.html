@@ -49,14 +49,13 @@
 
 <section id="profile">
   <div class="container">
-    <h1 class="title text-center">G. Roberts</h1>
+    <img alt="Profile Image" style="width:200px;height:auto;">
+    <h1 class="title text-center" th:text="${provider.username}"></h1>
     <div class="row">
       <div class="col-md-6 mx-auto">
       <div class="comments">
         <label for="Textarea"></label>
         <textarea id="Textarea" name="Textarea" rows="10" cols="70" th:text="${provider.bio}"></textarea>
-
-
         <br><br>
       </div>
     </div>
