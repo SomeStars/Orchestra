@@ -35,7 +35,7 @@ public class Report {
         this.songId = songId;
         this.reviewId = reviewId;
         this.userId = userId;
-        this.status = "pending"; // default status
+        this.status = "pending";// default status
     }
 
     // getters and setters
