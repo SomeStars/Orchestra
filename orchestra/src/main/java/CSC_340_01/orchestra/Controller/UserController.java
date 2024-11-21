@@ -22,17 +22,12 @@ public class UserController {
         this.userService = userService;
     }
 
-    // get a list of all users
+
     @GetMapping("/all")
     public String getAllUsers(Model model) {
         List<User> users = userService.getAllUsers();
         model.addAttribute("users", users);
         return "manage-users";
-    }
-
-    @GetMapping("/test-thymeleaf")
-    public String testThymeleaf() {
-        return "manage-users"; // Should resolve to manage-users.html
     }
 
     /*
@@ -54,5 +49,6 @@ public class UserController {
         return userService.getUserById(userId);
     }
     */
+
 
 }
