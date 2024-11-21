@@ -37,8 +37,9 @@ public class PageController {
     }
 
     // route to login page
-    @GetMapping("/logout")
+    @GetMapping("/login")
     public String showLogin() {
         return "login";
     }
+
 }

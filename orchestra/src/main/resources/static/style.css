@@ -164,6 +164,7 @@ body
     flex-direction: column;
     align-items: center; /* Center child items horizontally */
     padding: 10px;
+    justify-content: center;
 }
 .title
 {
@@ -176,14 +177,20 @@ body
     margin-top: 20px;
     text-align: center; /* Center the title */
 }
+.col-md-6 a {
+    margin-bottom: 20px; !important/* Optional: Add spacing between buttons within the same column */
+    margin-top: 20px; !important
+}
 .col-md-6
 {
+    padding: 20px;
     display: flex;
     flex-direction: column; /* Stack items vertically */
     justify-content: center; /* Center textarea vertically */
     align-items: center; /* Center horizontally */
     width: 100%;
 }
+
 
 .img-fluid {
     margin-top: 50px;

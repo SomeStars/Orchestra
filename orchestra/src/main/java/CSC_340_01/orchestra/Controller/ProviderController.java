@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+
 
 import java.util.List;
 
 @Controller
-@RequestMapping("/providers")
+@RequestMapping("/profile")
 public class ProviderController {
     private final ProviderService providerService;
 
@@ -20,7 +20,7 @@ public class ProviderController {
         this.providerService = providerService;
     }
 
-    @GetMapping
+    @GetMapping("/providers")
     public List<Provider> getAllProviders() {
         return providerService.getAllProviders();
     }
@@ -44,15 +44,40 @@ public class ProviderController {
         return providerService.getAllProviders();
     }
 
-    @PutMapping("/update/{provider_id}")
-    public Provider updateProvider(@PathVariable long provider_id, @RequestBody Provider provider){
-        providerService.updateProvider(provider_id, provider);
-        return providerService.getProviderById(provider_id);
+    @PostMapping("/update/{provider_id}")
+    public String updateProvider(
+            @PathVariable long provider_id,
+            @RequestParam String bio,
+            @RequestParam String payment_url) {
+
+        // Create a new Provider object with updated data
+        Provider updatedProvider = new Provider();
+        updatedProvider.setProvider_id(provider_id);
+        updatedProvider.setBio(bio);
+        updatedProvider.setPaymentUrl(payment_url);
+
+        // Call your service to update the provider in the database
+        providerService.updateProvider(provider_id, updatedProvider);
+
+        return "edit-profile";
     }
+
 
     @DeleteMapping("/delete/{provider_id}")
     public String deleteAnimal(@PathVariable int provider_id) {
         providerService.deleteProvider(provider_id);
-        return "/api/providers";
+        return "/profile/providers";
     }
+
+    @GetMapping("/edit-profile/{provider_id}")
+    public String showProfileEditor(@PathVariable("provider_id") Long provider_id, Model model) {
+        // Fetch user data from database using provider_id
+        Provider provider = providerService.getProviderById(provider_id);  // Your method to get user by provider_id
+
+        // Add the provider object to the model so it can be accessed in the template
+        model.addAttribute("provider", provider);
+
+        return "edit-profile";
+    }
+
 }

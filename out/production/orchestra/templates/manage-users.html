@@ -14,25 +14,31 @@
 
 <section id="nav-bar" class="nav-link">
     <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand" href="#"><img src="../static/Img/Logo.jpg"></a>
+        <a class="navbar-brand" th:href="@{/}">
+            <img th:src="@{/Img/Logo.jpg}">
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fa fa-bars"></i>
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <form class="form-inline d-flex">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-dark" type="submit">Search</button>
+            </form>
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">MENU</a>
+                    <a class="nav-link" th:href="@{/}">MENU<span class="sr-only"></span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="profile.html">PROFILE</a>
+                    <a class="nav-link" th:href="@{/profile}">PROFILE</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="admin.html">SETTINGS</a>
+                    <a class="nav-link" th:href="@{/admin}">SETTINGS</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="login.html">LOGOUT</a>
+                    <a class="nav-link" th:href="@{/login}">LOGOUT</a>
                 </li>
             </ul>
         </div>

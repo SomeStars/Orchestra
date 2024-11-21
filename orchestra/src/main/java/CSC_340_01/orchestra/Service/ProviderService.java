@@ -1,8 +1,6 @@
 package CSC_340_01.orchestra.Service;
 
 import CSC_340_01.orchestra.Model.Provider;
-import CSC_340_01.orchestra.Model.Provider;
-import CSC_340_01.orchestra.Repository.ProviderRepository;
 import CSC_340_01.orchestra.Repository.ProviderRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
@@ -20,17 +18,17 @@ public class ProviderService {
         return providerRepository.findAll();
     }
 
-    public Provider getProviderById(long providerId){
-        return providerRepository.findById(providerId).orElse(null);
+    public Provider getProviderById(long provider_id){
+        return providerRepository.findById(provider_id).orElse(null);
     }
+
     public void addNewProvider(Provider provider){
         providerRepository.save(provider);
     }
 
-    public void updateProvider(long providerId, Provider provider){
-        Provider existing = getProviderById(providerId);
+    public void updateProvider(long provider_id, Provider provider){
+        Provider existing = getProviderById(provider_id);
         existing.setBio(provider.getBio());
-        existing.setUsername(provider.getUsername());
         existing.setProfileImage(provider.getProfileImage());
         existing.setPaymentUrl(provider.getPaymentUrl());
 

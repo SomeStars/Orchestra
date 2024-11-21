@@ -26,7 +26,7 @@ public class Provider {
     // getters and setters
     public Long getProvider_id() { return provider_id; }
 
-    public void setProvider_id(Long userId) { this.provider_id = userId; }
+    public void setProvider_id(Long provider_id) { this.provider_id = provider_id; }
 
     public String getBio() { return bio; }
 
