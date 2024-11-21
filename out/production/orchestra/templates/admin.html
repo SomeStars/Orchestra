@@ -11,12 +11,12 @@
             crossorigin="anonymous"></script>
     <link rel="stylesheet" th:href="@{/style.css"}>
 </head>
-<body id="admin-page">
+<body id="admin">
 
 
 <section id="nav-bar" class="nav-link">
     <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand" href="#"><img src="../static/img/Logo.jpg"></a>
+        <a class="navbar-brand" href="#"><img src="../static/Img/Logo.jpg"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fa fa-bars"></i>
@@ -50,13 +50,13 @@
 <section class="container my-5 text-center">
     <div class="row">
         <div class="col-md-4 mb-3">
-            <a href="manage-users.html" class="btn btn-dark btn-lg w-100">Manage Users</a>
+            <a th:href="@{/manage-users}" class="btn btn-dark btn-lg w-100">Manage Users</a>
         </div>
         <div class="col-md-4 mb-3">
-            <a href="view-reports.html" class="btn btn-danger btn-lg w-100">View Reports</a>
+            <a th:href="@{/view-reports}" class="btn btn-danger btn-lg w-100">View Reports</a>
         </div>
         <div class="col-md-4 mb-3">
-            <a href="admin.html" class="btn btn-info btn-lg w-100">Settings</a>
+            <a th:href="@{/admin}" class="btn btn-info btn-lg w-100">Settings</a>
         </div>
     </div>
 </section>
