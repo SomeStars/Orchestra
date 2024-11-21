@@ -11,7 +11,7 @@
             crossorigin="anonymous"></script>
     <link rel="stylesheet" th:href="@{/style.css"}>
 </head>
-<body id="admin-page">
+<body id="admin">
 
 
 <section id="nav-bar" class="nav-link">
@@ -50,13 +50,13 @@
 <section class="container my-5 text-center">
     <div class="row">
         <div class="col-md-4 mb-3">
-            <a href="manage-users.html" class="btn btn-dark btn-lg w-100">Manage Users</a>
+            <a th:href="@{/manage-users}" class="btn btn-dark btn-lg w-100">Manage Users</a>
         </div>
         <div class="col-md-4 mb-3">
-            <a href="view-reports.html" class="btn btn-danger btn-lg w-100">View Reports</a>
+            <a th:href="@{/view-reports}" class="btn btn-danger btn-lg w-100">View Reports</a>
         </div>
         <div class="col-md-4 mb-3">
-            <a href="admin.html" class="btn btn-info btn-lg w-100">Settings</a>
+            <a th:href="@{/admin}" class="btn btn-info btn-lg w-100">Settings</a>
         </div>
     </div>
 </section>

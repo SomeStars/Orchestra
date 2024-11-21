@@ -24,7 +24,9 @@ public class Report {
     @Column(name = "report_reason")
     private String reason;
 
+    @Column(name = "report_date")
     private Date date;
+
     private String status;
 
     // constructor

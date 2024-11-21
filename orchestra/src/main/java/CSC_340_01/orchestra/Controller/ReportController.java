@@ -37,23 +37,18 @@ public class ReportController {
         return "view-reports";
     }
 
-    /* get a list of all reports on songs
-    @GetMapping("/songs")
-    public List<Report> getAllSongReports() {
-        return reportService.getAllSongReports();
+    // delete a report
+    @GetMapping("/delete/{id}")
+    public String deleteReport(@PathVariable Long id) {
+        reportService.deleteReportById(id);
+        return "redirect:/reports/all";
     }
-
-    // get a list of all reports on reviews
-    @GetMapping("/reviews")
-    public List<Report> getAllReviewReports() {
-        return reportService.getAllReviewReports();
-    }
-
-    // view the details of a single report
+    /* view the details of a single report
     @GetMapping("/{reportId}")
     public Report getReportById(@PathVariable Long reportId) {
         return reportService.getReportById(reportId);
     }
+
     // create a new report
     @PostMapping
     public ResponseEntity<Report> createReport(@RequestBody Report report) {

@@ -50,4 +50,9 @@ public class ReportService {
         }
         return reportRepository.save(report);
     }
+
+    // delete a report by id
+    public void deleteReportById(Long id) {
+        reportRepository.deleteById(id);
+    }
 }
