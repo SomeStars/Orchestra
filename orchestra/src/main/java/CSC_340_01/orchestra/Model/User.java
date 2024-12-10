@@ -1,10 +1,8 @@
 package CSC_340_01.orchestra.Model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -18,6 +16,12 @@ public class User {
     private String email;
     private String password;
     private String role; // Possible values: user, provider, admin
+
+    @OneToMany(mappedBy = "userId", cascade = CascadeType.REMOVE)
+    private List<Review> reviews;
+
+    @OneToMany(mappedBy = "userId", cascade = CascadeType.REMOVE)
+    private List<Report> reports;
 
     // constructor
     public User() {

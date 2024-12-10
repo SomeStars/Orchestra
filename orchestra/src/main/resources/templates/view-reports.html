@@ -128,7 +128,8 @@
                         <a th:href="@{'/reports/ignore/' + ${report.reportId}}" class="btn btn-success btn-sm">Ignore</a>
                         <a th:href="@{'/reports/delete/' + ${report.reportId}}" class="btn btn-danger btn-sm"
                            onclick="return confirm('Are you sure you want to delete this report?');">Delete Report</a>
-                        <a class="btn btn-warning btn-sm">Delete Review</a>
+                        <a th:href="@{'/reports/delete-review/' + ${report.reviewId}}" class="btn btn-warning btn-sm"
+                           onclick="return confirm('Are you sure you want to delete this review?');">Delete Review</a>
                     </td>
                 </tr>
                 </tbody>

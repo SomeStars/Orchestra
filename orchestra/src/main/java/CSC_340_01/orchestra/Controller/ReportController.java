@@ -84,6 +84,31 @@ public class ReportController {
         return "redirect:/reports/all";
     }
 
+    @GetMapping("/ignore/{reportId}")
+    public String ignoreReport(@PathVariable Long reportId) {
+        try {
+            Report report = reportRepository.findById(reportId)
+                    .orElseThrow(() -> new IllegalArgumentException("Invalid report ID"));
+            report.setStatus("ignored");
+            reportRepository.save(report);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "redirect:/error";
+        }
+        return "redirect:/reports/all";
+    }
+
+    @GetMapping("/delete-review/{reviewId}")
+    public String deleteReview(@PathVariable Long reviewId) {
+        try {
+            reviewRepository.deleteById(reviewId);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "redirect:/error";
+        }
+        return "redirect:/reports/all";
+    }
+
     /* view the details of a single report
     @GetMapping("/{reportId}")
     public Report getReportById(@PathVariable Long reportId) {

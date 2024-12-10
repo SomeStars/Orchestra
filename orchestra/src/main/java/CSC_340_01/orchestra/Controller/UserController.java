@@ -1,6 +1,9 @@
 package CSC_340_01.orchestra.Controller;
 
 import CSC_340_01.orchestra.Model.User;
+import CSC_340_01.orchestra.Repository.ReportRepository;
+import CSC_340_01.orchestra.Repository.ReviewRepository;
+import CSC_340_01.orchestra.Repository.SongRepository;
 import CSC_340_01.orchestra.Repository.UserRepository;
 import CSC_340_01.orchestra.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +30,8 @@ import javax.swing.text.html.Option;
 public class UserController {
     @Autowired
     private UserRepository userRepository;
+    private final ReviewRepository reviewRepository;
+    private final ReportRepository reportRepository;
 
     private PasswordEncoder passwordEncoder;
 
@@ -34,8 +39,10 @@ public class UserController {
 
     private AuthenticationManager authenticationManager;
 
-    public UserController(UserService userService) {
+    public UserController(UserService userService, ReviewRepository reviewRepository, ReportRepository reportRepository) {
         this.userService = userService;
+        this.reviewRepository = reviewRepository;
+        this.reportRepository = reportRepository;
     }
 
     @GetMapping("/login")
@@ -124,6 +131,21 @@ public class UserController {
         return userService.getUserById(userId);
     }
 
+    // delete a user
+    @GetMapping("/delete/{userId}")
+    public String deleteUser(@PathVariable Long userId) {
+        try {
+            // Delete related entities if necessary
+            reviewRepository.deleteAllByUserId(userId);
+            reportRepository.deleteAllByUserId(userId);
 
+            userRepository.deleteById(userId);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "redirect:/error";
+        }
+
+        return "redirect:/users/all";
+    }
 
 }
