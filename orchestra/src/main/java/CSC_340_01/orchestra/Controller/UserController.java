@@ -81,10 +81,6 @@ public class UserController {
             return "create";
         }
 
-        if (!password.equals(confirmPassword)){
-            redirectAttributes.addFlashAttribute("error", "passwords are different. Try again.");
-            return "create";
-        }
 
         Optional<User> usernameExists = userRepository.findByUsername(username);
         if (usernameExists.isPresent()){
