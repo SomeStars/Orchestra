@@ -118,7 +118,7 @@ public class UserController {
         return userService.getAllUsers();
     }
 
-    @PutMapping("/updateUser/{userId}")
+    @PutMapping("/update/{userId}")
     public User updateUser(@PathVariable long userId, @RequestBody User user){
         userService.updateUser(userId, user);
         return userService.getUserById(userId);

@@ -1,11 +1,14 @@
 package CSC_340_01.orchestra.Controller;
 
 import CSC_340_01.orchestra.Model.Report;
+import CSC_340_01.orchestra.Model.Review;
+
+import CSC_340_01.orchestra.Model.Song;
 import CSC_340_01.orchestra.Repository.ReportRepository;
+import CSC_340_01.orchestra.Repository.SongRepository;
+import CSC_340_01.orchestra.Repository.ReviewRepository;
 import CSC_340_01.orchestra.Service.ReportService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -20,9 +23,13 @@ public class ReportController {
     private ReportService reportService;
 
     private final ReportRepository reportRepository;
+    private final SongRepository songRepository;
+    private final ReviewRepository reviewRepository;
 
-    public ReportController(ReportRepository reportRepository) {
+    public ReportController(ReportRepository reportRepository, SongRepository songRepository, ReviewRepository reviewRepository) {
         this.reportRepository = reportRepository;
+        this.songRepository = songRepository;
+        this.reviewRepository = reviewRepository;
     }
 
     // get a list of all reports
@@ -43,6 +50,40 @@ public class ReportController {
         reportService.deleteReportById(id);
         return "redirect:/reports/all";
     }
+
+    // create a new report
+    @PostMapping("/create")
+    public String createReport(@RequestParam("reportableContent") String contentId,
+                               @RequestParam("reportReason") String reason,
+                               @RequestParam("userId") Long userId) {
+        try {
+            // Split the content string into ID and type
+            String[] parts = contentId.split(" - ");
+            Long id = Long.parseLong(parts[0]);
+            String type = parts[1];
+
+            // Create a new report
+            Report newReport = new Report();
+            if (type.equalsIgnoreCase("Song")) {
+                newReport.setSongId(id);
+            } else if (type.equalsIgnoreCase("Review")) {
+                newReport.setReviewId(id);
+            }
+
+            newReport.setReason(reason);
+            newReport.setUserId(userId);
+            newReport.setStatus("pending");
+
+            reportRepository.save(newReport);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "redirect:/error";
+        }
+
+        return "redirect:/reports/all";
+    }
+
     /* view the details of a single report
     @GetMapping("/{reportId}")
     public Report getReportById(@PathVariable Long reportId) {
