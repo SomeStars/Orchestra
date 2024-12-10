@@ -88,4 +88,9 @@ public class PageController {
     public String showSuccessPage() {
         return "success-page";
     }
+
+    @GetMapping("/upload-music")
+    public String showUploadMusicPage() {
+        return "upload-music";
+    }
 }
