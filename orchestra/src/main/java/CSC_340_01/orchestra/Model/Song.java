@@ -1,10 +1,8 @@
 package CSC_340_01.orchestra.Model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.util.Date;
 
 @Entity
 @Table(name = "songs")
@@ -15,7 +13,11 @@ public class Song {
 
     private String title;
     private String genre;
-    private String release_date;
+
+    @Column(name = "release_date", nullable = false, insertable = false, updatable = false, columnDefinition = "DATETIME(6) DEFAULT CURRENT_TIMESTAMP")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date release_date;
+
     private String file_url;
     private String description;
 
@@ -47,11 +49,11 @@ public class Song {
         this.genre = genre;
     }
 
-    public String getReleaseDate() {
+    public Date getReleaseDate() {
         return release_date;
     }
 
-    public void setReleaseDate(String release_date) {
+    public void setReleaseDate(Date release_date) {
         this.release_date = release_date;
     }
 
