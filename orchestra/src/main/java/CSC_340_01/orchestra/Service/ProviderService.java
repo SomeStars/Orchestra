@@ -22,8 +22,11 @@ public class ProviderService {
         return providerRepository.findById(provider_id).orElse(null);
     }
 
-    public void addNewProvider(Provider provider){
-        providerRepository.save(provider);
+    public void addNewProvider(String username) {
+        // Create a new provider based on the user
+        Provider newProvider = new Provider();
+        newProvider.setUsername(username); // Associate the user with the provider (assuming Provider has a User field)
+        providerRepository.save(newProvider); // Save the provider to the database
     }
 
     public void updateProvider(long provider_id, Provider provider){

@@ -6,6 +6,7 @@ import CSC_340_01.orchestra.Repository.ReviewRepository;
 import CSC_340_01.orchestra.Repository.SongRepository;
 import CSC_340_01.orchestra.Repository.UserRepository;
 import CSC_340_01.orchestra.Service.UserService;
+import CSC_340_01.orchestra.Service.ProviderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
@@ -33,13 +34,20 @@ public class UserController {
     private PasswordEncoder passwordEncoder;
 
     private final UserService userService;
+    private final ProviderService providerService;
 
     private AuthenticationManager authenticationManager;
 
+<<<<<<< HEAD
     public UserController(UserService userService, ReviewRepository reviewRepository, ReportRepository reportRepository) {
         this.userService = userService;
         this.reviewRepository = reviewRepository;
         this.reportRepository = reportRepository;
+=======
+    public UserController(UserService userService, ProviderService providerService) {
+        this.userService = userService;
+        this.providerService = providerService;
+>>>>>>> 1f57273 (Create account with Provider class)
     }
 
     @GetMapping("/login")
@@ -98,6 +106,10 @@ public class UserController {
         newAccount.setEmail(email);
         newAccount.setRole(role);
         userRepository.save(newAccount);
+
+        if ("Provider".equals(role)) {
+            providerService.addNewProvider(username);  // Call providerService to create a new provider
+        }
 
         return "login";
     }

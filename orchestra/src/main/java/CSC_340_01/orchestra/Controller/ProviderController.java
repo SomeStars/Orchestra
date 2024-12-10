@@ -39,8 +39,8 @@ public class ProviderController {
 
 
     @PostMapping("/new")
-    public List<Provider> addNewProvider(@RequestBody Provider provider) {
-        providerService.addNewProvider(provider);
+    public List<Provider> addNewProvider(@RequestBody String username) {
+        providerService.addNewProvider(username);
         return providerService.getAllProviders();
     }
 

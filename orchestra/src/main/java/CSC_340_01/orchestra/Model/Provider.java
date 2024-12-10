@@ -9,6 +9,7 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "providers")
 public class Provider {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long provider_id;
