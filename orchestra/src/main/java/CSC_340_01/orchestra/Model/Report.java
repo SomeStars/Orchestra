@@ -1,6 +1,9 @@
 package CSC_340_01.orchestra.Model;
 
 import jakarta.persistence.*;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 import CSC_340_01.orchestra.Model.User;
 
@@ -24,8 +27,10 @@ public class Report {
     @Column(name = "report_reason")
     private String reason;
 
-    @Column(name = "report_date")
+    @Column(name = "report_date", nullable = false, insertable = false, updatable = false, columnDefinition = "DATETIME(6) DEFAULT CURRENT_TIMESTAMP")
+    @Temporal(TemporalType.TIMESTAMP)
     private Date date;
+
 
     private String status;
 
@@ -77,7 +82,7 @@ public class Report {
         return userId;
     }
 
-    public void setUser(Long userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 
