@@ -29,7 +29,7 @@ public class PageController {
     }
 
     // route for the home page
-    @GetMapping("/")
+    @GetMapping("/index")
     public String showHomePage() {
         return "index";
     }

@@ -59,7 +59,7 @@ public class UserController {
             User user = userOptional.get();
 
             if (user.getPassword().equals(password)) {
-                return "index";
+                return "redirect:/index";
             } else {
                 redirectAttributes.addFlashAttribute("error", "Wrong Credentials");
                 return "login";
