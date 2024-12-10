@@ -9,6 +9,29 @@
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
             crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../static/style.css">
+
+    <script>
+        // Event listener for "Like" button
+        document.getElementById('likeBtn').addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default action (e.g., page refresh)
+            alert('You liked this item!');
+            // Optionally send AJAX request to server to record the like
+        });
+
+        // Event listener for "Dislike" button
+        document.getElementById('dislikeBtn').addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default action (e.g., page refresh)
+            alert('You disliked this item!');
+            // Optionally send AJAX request to server to record the dislike
+        });
+
+        // Event listener for "Report" button
+        document.getElementById('reportBtn').addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default action (e.g., page refresh)
+            // Redirect to the report creation page or trigger the reporting action
+            window.location.href = '/reports/create'; // Adjust the URL as needed
+        });
+    </script>
 </head>
 <body>
 
@@ -74,9 +97,10 @@
                                 <source src="sound/PinkPanther30.wav" type="audio/wav">
                                 Your browser does not support the audio element.
                             </audio>
-                            <span <a href="" type="button" class="btn btn-respond">Like</a> </span>
-                            <span <a href="" type="button" class="btn btn-respond">Dislike</a> </span>
-                            <span <a th:href="@{}" type="button" class="btn btn-respond">Report</a> </span>
+                            <span><a href="#" type="button" class="btn btn-respond" id="likeBtn">Like</a></span>
+                            <span><a href="#" type="button" class="btn btn-respond" id="dislikeBtn">Dislike</a></span>
+                            <span><a href="#" th:href="@{reports/create}" type="button" class="btn btn-respond" id="reportBtn">Report</a></span>
+
 
                         </div>
                         <div class="audio-container">
@@ -89,8 +113,11 @@
                                 <source src="sound/CantinaBand60.wav" type="audio/wav">
                                 Your browser does not support the audio element.
                             </audio>
-                            <span <a href="" type="button" class="btn btn-respond">Like</a> </span>
-                            <span <a href="" type="button" class="btn btn-respond">Dislike</a> </span>
+
+                            <span><a href="#" type="button" class="btn btn-respond" id="likeBtn">Like</a></span>
+                            <span><a href="#" type="button" class="btn btn-respond" id="dislikeBtn">Dislike</a></span>
+                            <span><a href="#" th:href="@{reports/create}" type="button" class="btn btn-respond" id="reportBtn">Report</a></span>
+
                         </div>
                     </div>
                 </div>
