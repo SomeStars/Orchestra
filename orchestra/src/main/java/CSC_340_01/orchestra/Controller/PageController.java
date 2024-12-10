@@ -42,4 +42,8 @@ public class PageController {
         return "login";
     }
 
+    @GetMapping("/success-page")
+    public String showSuccessPage() {
+        return "success-page";
+    }
 }

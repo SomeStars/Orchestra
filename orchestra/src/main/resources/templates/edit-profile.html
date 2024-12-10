@@ -21,21 +21,8 @@
             fetch(form.action, {
                 method: 'PUT', // Explicitly set the method to PUT
                 body: formData // Attach the form data
-            })
-                .then(response => {
-                    if (response.ok) {
-                        // Handle successful response
-                        console.log('Provider updated successfully!');
-                        window.location.href = '/edit-profile'; // Redirect to the appropriate page
+            });
 
-                    } else {
-                        // Handle error response
-                        console.error('Failed to update provider');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error updating provider:', error);
-                });
         });
 
     </script>

@@ -59,7 +59,7 @@ public class ProviderController {
         // Call your service to update the provider in the database
         providerService.updateProvider(provider_id, updatedProvider);
 
-        return "edit-profile";
+        return "redirect:/success-page";
     }
 
 
